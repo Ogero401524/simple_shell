@@ -1,4 +1,7 @@
 #include "shell.h"
+
+extern char **environ;
+
 /**
  * execute_command - Execute a command using fork and execve
  * @command: The command to execute
@@ -9,8 +12,6 @@
  *
  * Return: No return value.
  */
-extern char **environ;
-
 void execute_command(const char *command)
 {
 	pid_t child = fork();
@@ -22,16 +23,26 @@ void execute_command(const char *command)
 	}
 	else if (child == 0)
 	{
-		char *args[2];
-		args[0] = strdup(command);
-		args[1] = NULL;
 
-		if (execve(command, args, environ) == -1)
+		char *args[ARG_MAX];
+		char *token = strtok((char *)command, " ");
+		int i = 0;
+
+
+		while (token != NULL && i < ARG_MAX - 1)
+		{
+			args[i++] = token;
+			token = strtok(NULL, " ");
+		}
+
+		args[i] = NULL;
+
+
+		if (execve(args[0], args, environ) == -1)
 		{
 			perror("execve");
 			exit(EXIT_FAILURE);
 		}
-		free(args[0]);
 	}
 	else
 	{
