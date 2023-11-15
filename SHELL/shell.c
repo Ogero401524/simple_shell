@@ -8,7 +8,7 @@ int main(void)
 
     while (1)
     {
-        printf("$ ");
+        _print("$ ");
         fflush(stdout);
 
         chars_read = getline(&user_input, &input_length, stdin);
@@ -17,7 +17,7 @@ int main(void)
         {
             if (feof(stdin))
             {
-                printf("\n");
+                _print("\n");
                 exit_shell();
             }
             else

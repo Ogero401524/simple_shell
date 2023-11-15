@@ -8,7 +8,7 @@ int check_command_in_path(const char *command, char *full_path)
     while (token != NULL)
     {
         snprintf(full_path, 1024, "%s/%s", token, command);
-	printf("Checking: %s\n", full_path);
+	_print("Checking: %s\n", full_path);
         if (access(full_path, F_OK) == 0)
             return 1; /* Command found */
         token = strtok(NULL, ":");
@@ -25,7 +25,7 @@ void _execute(const char *command, char *args[])
 
     if (!check_command_in_path(command, full_path))
     {
-        fprintf(stderr, "Error: command %s not found\n", command);
+       f _print(stderr, "Error: command %s not found\n", command);
         return;
     }
 
@@ -51,7 +51,7 @@ void _execute(const char *command, char *args[])
         waitpid(child, &status, 0);
         if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
         {
-            fprintf(stderr, "Error: command %s failed to execute\n", command);
+            f _print(stderr, "Error: command %s failed to execute\n", command);
         }
     }
 }

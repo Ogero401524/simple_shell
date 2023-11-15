@@ -1,18 +1,17 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef SHELLO_H
+#define SHELLO_H
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
-extern char **environ;
+#define MAX_COMMAND_LENGTH 100
 
-int check_command_in_path(const char *command, char *full_path);
-void _execute(const char *command, char *args[]);
-void exit_shell(void);
-void env_shell(void);
+void _print(const char *message);
+void display_prompt();
+void execute_command(const char *command);
 
-#endif /* SHELL_H */
+#endif

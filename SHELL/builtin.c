@@ -2,7 +2,7 @@
 
 void exit_shell(void)
 {
-    printf("Exiting shell...\n");
+    _print("Exiting shell...\n");
     exit(EXIT_SUCCESS);
 }
 
@@ -12,7 +12,7 @@ void env_shell(void)
 
     while (*env_var != NULL)
     {
-        printf("%s\n", *env_var);
+        _print("%s\n", *env_var);
         env_var++;
     }
 }
