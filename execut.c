@@ -24,7 +24,7 @@ void execute_command(const char *command)
 		args[0] = strdup(command);
 		args[1] = NULL;
 
-		if (execve(command, args, NULL) == -1)
+		if (execve(command, args, environ) == -1)
 		{
 			perror("execve");
 			exit(EXIT_FAILURE);
