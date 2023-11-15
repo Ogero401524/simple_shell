@@ -7,9 +7,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-extern char **environ;
-#define MAX_COMMAND_LENGTH 100
 
+#define MAX_COMMAND_LENGTH 100
+extern char **environ;
 void _print(const char *message);
 void display_prompt();
 void execute_command(const char *command);
