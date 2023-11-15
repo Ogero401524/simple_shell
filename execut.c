@@ -9,6 +9,8 @@
  *
  * Return: No return value.
  */
+extern char **environ;
+
 void execute_command(const char *command)
 {
 	pid_t child = fork();
