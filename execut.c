@@ -42,4 +42,5 @@ void execute_command(const char *command)
  *			_print(" No such file or directory\n");
  *		}
  */
+		wait(NULL);
 		}
