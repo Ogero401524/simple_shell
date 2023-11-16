@@ -34,13 +34,8 @@ void execute_command(const char *command)
 		}
 	}
 	else
-		/**{
-*		int status;
- *		waitpid(child, &status, 0);
- *		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
- *		{
- *			_print(" No such file or directory\n");
- *		}
- */
-		wait(NULL);
-		}
+	{
+	int status;
+	waitpid(child, &status, 0);
+	}
+}
