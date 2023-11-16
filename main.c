@@ -11,7 +11,7 @@
 
 int main()
 {
-	char command[MAX_COMMAND_LENGTH];
+	char command[MAX_COMMAND_LENGTH] = {0};
 
 	while (1)
 	{
@@ -19,9 +19,16 @@ int main()
 
 		if (fgets(command, sizeof(command), stdin) == NULL)
 		{
-
-			_print("\nExiting shell...\n");
-			break;
+			if (feof(stdin))
+			{
+			_print("\n");
+			exit(EXIT_SUCCESS);
+			}
+			else
+			{
+				_print("Error in input!\n");
+				exit(EXIT_FAILURE);
+			}
 		}
 
 

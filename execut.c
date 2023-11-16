@@ -23,20 +23,9 @@ void execute_command(const char *command)
 	}
 	else if (child == 0)
 	{
-
-		char *args[ARG_MAX];
-		char *token = strtok((char *)command, " ");
-		int i = 0;
-
-
-		while (token != NULL && i < ARG_MAX - 1)
-		{
-			args[i++] = token;
-			token = strtok(NULL, " ");
-		}
-
-		args[i] = NULL;
-
+		char *args[2];
+		args[0] = strdup(command);
+		args[1] = NULL;
 
 		if (execve(args[0], args, environ) == -1)
 		{
@@ -50,7 +39,7 @@ void execute_command(const char *command)
 		waitpid(child, &status, 0);
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
 		{
-			_print("./shell: No such file or directory\n");
+			_print(" No such file or directory\n");
 		}
 	}
 }
