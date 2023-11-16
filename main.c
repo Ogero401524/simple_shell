@@ -37,6 +37,7 @@ int main()
 		if (strlen(commandd) > 0)
 		{
 			execute_command(commandd);
+
 		}
 	}
 
