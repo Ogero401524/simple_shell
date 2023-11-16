@@ -11,13 +11,13 @@
 
 int main()
 {
-	char command[MAX_COMMAND_LENGTH] = {0};
+	char commandd[120];
 
 	while (1)
 	{
 		display_prompt();
 
-		if (fgets(command, sizeof(command), stdin) == NULL)
+		if (fgets(commandd, sizeof(commandd), stdin) == NULL)
 		{
 			if (feof(stdin))
 			{
@@ -32,11 +32,11 @@ int main()
 		}
 
 
-		command[strcspn(command, "\n")] = '\0';
+		commandd[strcspn(commandd, "\n")] = '\0';
 
-		if (strlen(command) > 0)
+		if (strlen(commandd) > 0)
 		{
-			execute_command(command);
+			execute_command(commandd);
 		}
 	}
 
